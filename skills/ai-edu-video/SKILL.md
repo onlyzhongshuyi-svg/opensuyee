@@ -7,6 +7,8 @@ description: 制作精致的 AI 科普短视频和教程视频，适用于用户
 
 用这个 skill 制作适合传播的 AI 科普/教程类短视频。核心目标是：画面内容和口播逐句对应，信息清晰，小白能看懂，成片适合视频号、小红书等平台发布。
 
+这个 skill 的核心规则写在 `SKILL.md`，同时提供跨 Agent 入口文件：`AGENTS.md`、`CLAUDE.md` 和 `references/cross-agent-usage.md`。在 Codex、Claude Code、opencode、OpenClaw 或其他 Agent 中使用时，都应先读取本文件，再读取对应模板文件。
+
 优先使用可复用的程序化视频流程，例如 Python/Pillow/ffmpeg、Remotion 或 HyperFrames。这样可以稳定控制版式、字幕、时长、动效、抽帧检查和多轮修改。
 
 ## 全局规格
@@ -49,6 +51,16 @@ description: 制作精致的 AI 科普短视频和教程视频，适用于用户
 - **dark-kinetic-course-template**：读取 `references/dark-kinetic-course-template.md`。深色高能课程感模板：真人口播顶部 PiP、暗色科技背景、大字号动效标题、黄色描边字幕、章节角标、难度条/评分/截图揭示等强节奏动效。适合更强调留存、冲击力和口播重点同步的 AI 工具教程、知识付费风格课程切片、创作者 explainer。
 
 新增模板时，在 `references/` 下新增一个模板说明文件，并在这里登记模板名、适用场景、版式规则和验收要求。
+
+## 跨 Agent 入口
+
+- **Codex**：把目录放到 `~/.codex/skills/ai-edu-video`，由 `SKILL.md` 触发。
+- **Claude Code**：把目录放到 `~/.claude/skills/ai-edu-video`；如果作为普通项目打开，`CLAUDE.md` 会提示 Claude 读取 `SKILL.md`。
+- **opencode**：使用 `AGENTS.md` 作为项目规则入口，或在 agent prompt 中引用 `AGENTS.md`。
+- **OpenClaw**：把 `AGENTS.md` 或 `SKILL.md` 放入 workspace 的 bootstrap/context 中。
+- **其他 Agent**：先读取 `AGENTS.md`，再读取 `SKILL.md` 和指定模板文件。
+
+跨 Agent 安装和适配细节见 `references/cross-agent-usage.md`。
 
 ## 产品 Icon 规则
 

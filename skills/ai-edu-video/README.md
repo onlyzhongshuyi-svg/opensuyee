@@ -1,6 +1,6 @@
 # ai-edu-video
 
-`ai-edu-video` 是一个用于制作 AI 科普短视频、产品入门教程和口播动态图文视频的 Codex skill。
+`ai-edu-video` 是一个用于制作 AI 科普短视频、产品入门教程和口播动态图文视频的跨 Agent skill。
 
 它适合把口播稿、口播视频、产品 icon、截图或录屏，整理成适合视频号、小红书等平台发布的 3:4 竖屏视频。核心目标是：画面和口播逐句对应，字幕短而清楚，重点信息通过动效被用户看见。
 
@@ -21,38 +21,66 @@
 
 ```text
 ai-edu-video/
+  AGENTS.md
+  CLAUDE.md
   SKILL.md
   agents/
     openai.yaml
   references/
     apple-green-pip-template.md
+    cross-agent-usage.md
     dark-kinetic-course-template.md
 ```
 
 ## 安装
 
-把仓库克隆到 Codex skills 目录：
+从 `opensuyee` 仓库安装：
+
+```bash
+git clone https://github.com/onlyzhongshuyi-svg/opensuyee.git
+cd opensuyee
+```
+
+安装到 Codex：
 
 ```bash
 mkdir -p ~/.codex/skills
-git clone https://github.com/<your-user>/ai-edu-video.git ~/.codex/skills/ai-edu-video
+cp -R skills/ai-edu-video ~/.codex/skills/ai-edu-video
 ```
 
-如果本地已经有旧版本，可以进入目录后拉取更新：
+安装到 Claude Code：
 
 ```bash
-cd ~/.codex/skills/ai-edu-video
-git pull
+mkdir -p ~/.claude/skills
+cp -R skills/ai-edu-video ~/.claude/skills/ai-edu-video
+```
+
+用于 opencode / OpenClaw / 其他 Agent：
+
+```bash
+# 让 Agent 读取通用入口文件
+skills/ai-edu-video/AGENTS.md
+
+# 或复制到当前项目根目录
+cp skills/ai-edu-video/AGENTS.md ./AGENTS.md
 ```
 
 ## 使用方式
 
-在 Codex 中点名使用这个 skill，并提供口播稿、口播视频、产品素材和目标模板，例如：
+在支持 skills 的 Agent 中点名使用这个 skill，并提供口播稿、口播视频、产品素材和目标模板，例如：
 
 ```text
 [$ai-edu-video](~/.codex/skills/ai-edu-video/SKILL.md)
 用 dark-kinetic-course-template，基于这个口播视频，做成一个 3:4 竖屏科普视频。
 ```
+
+在不支持 skills 自动加载的 Agent 中，先让它读取入口文件：
+
+```text
+请读取 skills/ai-edu-video/AGENTS.md，然后按 ai-edu-video 的工作流处理这个口播视频。
+```
+
+更多跨 Agent 安装和入口说明见 `references/cross-agent-usage.md`。
 
 ## 扩展新模板
 
