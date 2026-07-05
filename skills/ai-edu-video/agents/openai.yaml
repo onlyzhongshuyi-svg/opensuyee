@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI Edu Video"
+  short_description: "Create polished AI explainer videos"
+  default_prompt: "Use $ai-edu-video to create a concise vertical AI education video from a script and presenter footage."

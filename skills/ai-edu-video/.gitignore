@@ -1,0 +1,15 @@
+.DS_Store
+*.log
+.env
+.env.*
+node_modules/
+dist/
+build/
+renders/
+output/
+*.mp4
+*.mov
+*.m4v
+*.m4a
+*.wav
+*.aiff
